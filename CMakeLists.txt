@@ -30,6 +30,7 @@ include_directories(${RAYLIB_INCLUDE_DIR})
 add_executable(
     PlaneWar
     src/main.cpp
+    src/window/window.cpp
 )
 
 # 链接 raylib 库
