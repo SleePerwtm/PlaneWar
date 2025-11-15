@@ -4,10 +4,10 @@
 
 class Window {
   private:
-    const int width_;   // 窗口宽度
-    const int height_;  // 窗口高度
-    const char* title_; // 窗口标题
-    int fps_;           // 帧率
+    const int   width_;  // 窗口宽度
+    const int   height_; // 窗口高度
+    const char* title_;  // 窗口标题
+    int         fps_;    // 帧率
 
   public:
     Window() = delete;
