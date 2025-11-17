@@ -8,16 +8,10 @@ PointerAlignment: Left
 # AlignAfterOpenBracket: Align - 设置在开括号后的参数对齐方式为对齐模式
 # AlignConsecutiveAssignments: true - 启用连续赋值语句的对齐功能
 # AlignConsecutiveDeclarations: true - 启用连续声明语句的对齐功能
-# AllowAllArgumentsOnNextLine: false - 禁止将所有参数放在下一行
-# BinPackParameters: false - 禁用参数的紧密排列，保持参数间适当的间距
-# PenaltyBreakBeforeFirstCallParameter: 100 - 设置在第一个调用参数前换行的惩罚值为100
 
 # 添加以下配置以实现连续参数、连续声明对齐
 AlignAfterOpenBracket: Align
 AlignConsecutiveAssignments: true
 AlignConsecutiveDeclarations: true
-AllowAllArgumentsOnNextLine: false
-BinPackParameters: false
-PenaltyBreakBeforeFirstCallParameter: 100
 ---
 
