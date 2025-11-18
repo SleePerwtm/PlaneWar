@@ -60,6 +60,8 @@ TexturePtr Entity::loadUniqueTexture(const char* path) {
   return TexturePtr(texture, TextureDeleter);
 }
 
+void Entity::draw() { DrawTexture(*texture_, position_.x, position_.y, WHITE); }
+
 void Entity::updatePosition() {
   /* 利用 raylib 中的 GetFrameTime() 函数，获取帧间间隔时间 */
   position_.x += velocity_.x * GetFrameTime();

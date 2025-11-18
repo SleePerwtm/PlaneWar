@@ -36,10 +36,10 @@ public:
   // 析构函数
   ~Entity() = default;
 
-  // 绘制
-  virtual void draw() = 0;
   // 更新位置
   virtual void updatePosition();
+  // 绘制
+  virtual void draw();
 
   // 加载纹理
   virtual void loadTexture(const char* path, TextureType type);

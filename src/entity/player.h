@@ -8,8 +8,8 @@ public:
   Player();
   Player(const Player&)            = delete;
   Player& operator=(const Player&) = delete;
-  ~Player()=default;
+  ~Player()                        = default;
 
+  // 重写更新位置的函数
   void updatePosition() override;
-  void draw() override;
 };

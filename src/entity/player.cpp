@@ -24,5 +24,3 @@ void Player::updatePosition() {
   velocity_.x += acceleration_.x * GetFrameTime();
   velocity_.y += acceleration_.y * GetFrameTime();
 }
-
-void Player::draw() { DrawTexture(*texture_, position_.x, position_.y, WHITE); }
