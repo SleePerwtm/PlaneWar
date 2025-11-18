@@ -11,6 +11,9 @@ private:
   std::unique_ptr<Player> player_; // 玩家对象
 
 public:
+  Game()  = default;
+  ~Game() = default;
+
   // 游戏初始化
   void init();
   // 游戏启动

@@ -13,6 +13,8 @@ public:
   Window() = delete;
   // 带参构造函数
   Window(int width, int height, const char* title);
+  // 析构函数
+  ~Window() = default;
 
   // 设置画布(帧缓冲区)以开始绘制
   void beginDrawing() const;
@@ -30,7 +32,4 @@ public:
 
   // 关闭窗口
   void close() const;
-
-  // 析构函数
-  ~Window() = default;
 };

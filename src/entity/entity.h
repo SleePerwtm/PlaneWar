@@ -33,6 +33,8 @@ public:
   // 指定纹理的构造函数
   Entity(Vector2 pos, Vector2 vel, Vector2 acc, int rad, int hp,
          const char* texture_path, TextureType type);
+  // 析构函数
+  ~Entity() = default;
 
   // 绘制
   virtual void draw() = 0;
@@ -55,7 +57,4 @@ public:
   virtual Vector2 get_velocity() const;
   // 获取加速度
   virtual Vector2 get_acceleration() const;
-
-  // 析构函数
-  ~Entity() = default;
 };
