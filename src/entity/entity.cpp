@@ -38,9 +38,11 @@ TexturePtr Entity::loadSharedTexture(const char* path) {
   // 查找缓存中是否有该纹理
   auto it = texture_cache_.find(path_str);
   if (it != texture_cache_.end()) {
+    // 检查缓存中纹理是否有效
     if (auto exist_texture = it->second.lock()) {
-      return exist_texture;
+      return exist_texture; // 纹理有效，直接返回
     } else {
+      // 纹理已被释放，清理无用缓存项
       texture_cache_.erase(it);
     }
   }
@@ -58,6 +60,7 @@ TexturePtr Entity::loadUniqueTexture(const char* path) {
 }
 
 void Entity::updatePosition() {
+  /* 利用 raylib 中的 GetFrameTime() 函数，获取帧间间隔时间 */
   position_.x += velocity_.x * GetFrameTime();
   position_.y += velocity_.y * GetFrameTime();
 
