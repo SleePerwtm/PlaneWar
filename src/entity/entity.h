@@ -42,6 +42,20 @@ public:
   // 加载纹理
   virtual void loadTexture(const char* path, TextureType type);
 
+  // 设置位置
+  virtual void set_position(Vector2 pos);
+  // 设置速度
+  virtual void set_velocity(Vector2 vel);
+  // 设置加速度
+  virtual void set_acceleration(Vector2 acc);
+
+  // 获取位置
+  virtual Vector2 get_position() const;
+  // 获取速度
+  virtual Vector2 get_velocity() const;
+  // 获取加速度
+  virtual Vector2 get_acceleration() const;
+
   // 析构函数
   ~Entity() = default;
 };
