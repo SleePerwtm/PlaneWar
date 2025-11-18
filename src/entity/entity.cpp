@@ -86,14 +86,6 @@ void Entity::loadTexture(const char* path, TextureType type) {
   }
 }
 
-void Entity::set_position(Vector2 pos) { position_ = pos; }
-
 void Entity::set_velocity(Vector2 vel) { velocity_ = vel; }
 
-void Entity::set_acceleration(Vector2 acc) { acceleration_ = acc; }
-
-Vector2 Entity::get_position() const { return position_; }
-
 Vector2 Entity::get_velocity() const { return velocity_; }
-
-Vector2 Entity::get_acceleration() const { return acceleration_; }
