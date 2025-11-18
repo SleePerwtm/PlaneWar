@@ -6,9 +6,9 @@
 
 int main() {
   // 初始化窗口
-  Window window(Config::Window::width, Config::Window::height,
-                Config::Window::title); // 设置大小和标题
-  window.set_fps(Config::Window::fps);  // 设置帧率
+  Window window(Config::Window::WIDTH, Config::Window::HEIGHT,
+                Config::Window::TITLE); // 设置大小和标题
+  window.set_fps(Config::Window::FPS);  // 设置帧率
 
   Player player;
 
