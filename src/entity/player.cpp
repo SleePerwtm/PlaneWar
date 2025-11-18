@@ -16,11 +16,19 @@ void Player::updatePosition() {
   Vector2 target_pos;
   target_pos.x = position_.x + velocity_.x * GetFrameTime();
   target_pos.y = position_.y + velocity_.y * GetFrameTime();
+
+  // 效果不好的代码，会导致飞机到屏幕边缘并按着组合键时，卡住不动
+  // if (target_pos.x > 0 && target_pos.x <= GetScreenWidth() - 2 * radius_ &&
+  //     target_pos.y > 0 && target_pos.y <= GetScreenHeight() - 2 * radius_)
+  //   position_ = target_pos;
+
+  /* 飞机在屏幕内才进行移动 */
   if (target_pos.x > 0 && target_pos.x <= GetScreenWidth() - 2 * radius_)
     position_.x = target_pos.x;
   if (target_pos.y > 0 && target_pos.y <= GetScreenHeight() - 2 * radius_)
     position_.y = target_pos.y;
 
+  /* 更新飞机速度 */
   velocity_.x += acceleration_.x * GetFrameTime();
   velocity_.y += acceleration_.y * GetFrameTime();
 }
