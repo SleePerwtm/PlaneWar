@@ -1,7 +1,9 @@
 #include "player.h"
+
+#include "raylib.h"
+
 #include "../config.h"
 #include "entity.h"
-#include "raylib.h"
 
 Player::Player()
     : Entity(Config::Player::POSITION, Config::Player::VELOCITY,

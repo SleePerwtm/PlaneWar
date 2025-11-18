@@ -1,6 +1,7 @@
 #pragma once
 
 #include "raylib.h"
+
 #include <memory>
 
 enum class TextureType { SHARED, UNIQUE }; // 纹理类型 感觉是个不错的抽象

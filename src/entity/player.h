@@ -1,7 +1,6 @@
 #pragma once
 
 #include "entity.h"
-#include "raylib.h"
 
 class Player : public Entity {
 private:
