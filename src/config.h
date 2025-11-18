@@ -20,14 +20,15 @@ constexpr char RIGHT = KEY_D; // 向右
 }; // namespace Keyboard
 
 namespace Player {
-constexpr Vector2     POSITION      = {434, 1148};            // 初始位置
-constexpr Vector2     VELOCITY      = {0, 0};                 // 初始速度
-constexpr Vector2     ACCELERATION  = {0, 0};                 // 初始加速度
-constexpr int         RADIUS        = 16;                     // 半径
-constexpr int         HP            = 3;                      // 初始血量
-constexpr Color       COLOR         = YELLOW;                 // 圆形颜色
+constexpr int         RADIUS        = 16; // 玩家贴图内接圆半径
+constexpr Vector2     POSITION      = {Window::WIDTH * 0.5 - RADIUS,
+                                       Window::HEIGHT * 0.8 - RADIUS}; // 玩家初始位置
+constexpr Vector2     VELOCITY      = {0, 0};                 // 玩家初始速度
+constexpr Vector2     ACCELERATION  = {0, 0};                 // 玩家初始加速度
+constexpr int         HP            = 3;                      // 玩家初始血量
 constexpr const char* IMG_PATH      = "../assets/player.jpg"; // 玩家贴图资源
-constexpr Vector2     MOVE_VELOCITY = {400, 400};             // 设置的移动速度
+constexpr float       SCALE         = 2.0f;       // 玩家贴图缩放倍数
+constexpr Vector2     MOVE_VELOCITY = {400, 400}; // 设置的移动速度
 }; // namespace Player
 
 }; // namespace Config

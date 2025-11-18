@@ -21,6 +21,7 @@ protected:
   // shared_ptr共享指针纹理，只有最后一个指针指向的变量，才会被销毁。
   TexturePtr  texture_;      // 纹理
   TextureType texture_type_; // 纹理类型
+  float       scale_;        // 缩放倍数
 
   // 加载共享纹理
   static TexturePtr loadSharedTexture(const char* path);
@@ -29,9 +30,9 @@ protected:
 
 public:
   // 不指定纹理的构造函数
-  Entity(Vector2 pos, Vector2 vel, Vector2 acc, int rad, int hp);
+  Entity(Vector2 pos, Vector2 vel, Vector2 acc, int rad, int hp, float scale);
   // 指定纹理的构造函数
-  Entity(Vector2 pos, Vector2 vel, Vector2 acc, int rad, int hp,
+  Entity(Vector2 pos, Vector2 vel, Vector2 acc, int rad, int hp, float scale,
          const char* texture_path, TextureType type);
   // 析构函数
   ~Entity() = default;

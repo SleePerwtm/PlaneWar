@@ -15,13 +15,14 @@ void TextureDeleter(Texture2D* texture) {
   }
 }
 
-Entity::Entity(Vector2 pos, Vector2 vel, Vector2 acc, int rad, int hp)
-    : position_(pos), velocity_(vel), acceleration_(acc), radius_(rad),
-      hp_(hp) {}
+Entity::Entity(Vector2 pos, Vector2 vel, Vector2 acc, int rad, int hp,
+               float scale)
+    : position_(pos), velocity_(vel), acceleration_(acc), radius_(rad * scale),
+      hp_(hp), scale_(scale) {}
 
 Entity::Entity(Vector2 pos, Vector2 vel, Vector2 acc, int rad, int hp,
-               const char* path, TextureType type)
-    : Entity(pos, vel, acc, rad, hp) {
+               float scale, const char* path, TextureType type)
+    : Entity(pos, vel, acc, rad, hp, scale) {
   texture_type_ = type;
   switch (type) {
   case TextureType::SHARED:
@@ -60,7 +61,9 @@ TexturePtr Entity::loadUniqueTexture(const char* path) {
   return TexturePtr(texture, TextureDeleter);
 }
 
-void Entity::draw() { DrawTexture(*texture_, position_.x, position_.y, WHITE); }
+void Entity::draw() {
+  DrawTextureEx(*texture_, position_, 0.0f, scale_, WHITE);
+}
 
 void Entity::updatePosition() {
   /* 利用 raylib 中的 GetFrameTime() 函数，获取帧间间隔时间 */

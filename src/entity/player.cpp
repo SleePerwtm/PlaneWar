@@ -8,8 +8,8 @@
 Player::Player()
     : Entity(Config::Player::POSITION, Config::Player::VELOCITY,
              Config::Player::ACCELERATION, Config::Player::RADIUS,
-             Config::Player::HP, Config::Player::IMG_PATH,
-             TextureType::UNIQUE) {}
+             Config::Player::HP, Config::Player::SCALE,
+             Config::Player::IMG_PATH, TextureType::UNIQUE) {}
 
 void Player::updatePosition() {
   /* 利用 raylib 中的 GetFrameTime() 函数，获取帧间间隔时间 */
