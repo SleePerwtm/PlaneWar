@@ -2,14 +2,11 @@
 
 #include "raylib.h"
 
-#include "../config.h"
 #include "entity.h"
 
-Player::Player()
-    : Entity(Config::Player::POSITION, Config::Player::VELOCITY,
-             Config::Player::ACCELERATION, Config::Player::RADIUS,
-             Config::Player::HP, Config::Player::SCALE,
-             Config::Player::IMG_PATH, TextureType::UNIQUE) {}
+Player::Player(Vector2 pos, Vector2 vel, Vector2 acc, int rad, int hp,
+               float scale, const char* path, TextureType type)
+    : Entity(pos, vel, acc, rad, hp, scale, path, type) {}
 
 void Player::updatePosition() {
   /* 利用 raylib 中的 GetFrameTime() 函数，获取帧间间隔时间 */

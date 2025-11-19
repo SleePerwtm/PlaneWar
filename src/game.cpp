@@ -1,6 +1,7 @@
 #include "game.h"
 
 #include "config.h"
+#include "entity/entity.h"
 #include "entity/player.h"
 #include "raylib.h"
 #include "window/window.h"
@@ -12,8 +13,12 @@ void Game::init() {
   window_->set_fps(Config::Window::FPS); // 设置帧率
 
   /* 创建玩家实体 */
-  player_ = std::make_unique<Player>();
+  player_ = std::make_unique<Player>(
+      Config::Player::POSITION, Config::Player::VELOCITY,
+      Config::Player::ACCELERATION, Config::Player::RADIUS, Config::Player::HP,
+      Config::Player::SCALE, Config::Player::IMG_PATH, TextureType::UNIQUE);
 }
+
 void Game::run() {
   while (!window_->shouldClose()) {
     window_->beginDrawing();
@@ -56,6 +61,12 @@ void Game::inputHandle() {
   player_->set_velocity(player_velocity_);
 }
 
-void Game::updatePosition() { player_->updatePosition(); }
+void Game::updatePosition() {
+  player_->updatePosition();
+  enemy_pool_->updateEntitiesPosition();
+}
 
-void Game::draw() { player_->draw(); }
+void Game::draw() {
+  player_->draw();
+  enemy_pool_->drawEntities();
+}

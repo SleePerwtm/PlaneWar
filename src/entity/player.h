@@ -5,7 +5,8 @@
 class Player : public Entity {
 private:
 public:
-  Player();
+  Player(Vector2 pos, Vector2 vel, Vector2 acc, int rad, int hp, float scale,
+         const char* path, TextureType type);
   Player(const Player&)            = delete;
   Player& operator=(const Player&) = delete;
   ~Player()                        = default;
