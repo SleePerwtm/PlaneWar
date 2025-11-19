@@ -3,6 +3,7 @@ project(PlaneWar VERSION 0.1.0 LANGUAGES C CXX)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+# 摘自 raylib 的 cmake 示例项目中的代码
 # Dependencies
 set(RAYLIB_VERSION 5.5)
 find_package(raylib ${RAYLIB_VERSION} QUIET) # QUIET or REQUIRED
@@ -30,7 +31,14 @@ include_directories(${RAYLIB_INCLUDE_DIR})
 add_executable(
     PlaneWar
     src/main.cpp
+    # test/player_display.cpp
+    src/game.cpp
     src/window/window.cpp
+    src/entity/entity.cpp
+    src/entity/player.cpp
+    src/entity/enemy.cpp
+    src/entity_pool/entity_pool.cpp
+    src/entity_pool/enemy_pool.cpp
 )
 
 # 链接 raylib 库
