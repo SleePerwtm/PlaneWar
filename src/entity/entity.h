@@ -4,7 +4,9 @@
 
 #include <memory>
 
-enum class TextureType { SHARED, UNIQUE }; // 纹理类型 感觉是个不错的抽象
+enum class TextureType { SHARED, UNIQUE }; // 纹理类型
+
+// shared_ptr共享指针纹理，只有最后一个指针指向的变量，才会被销毁。
 using TexturePtr = std::shared_ptr<Texture2D>;
 
 // 纹理删除器
@@ -12,13 +14,12 @@ void TextureDeleter(Texture2D* texture);
 
 class Entity {
 protected:
-  Vector2 position_;     // 位置
-  Vector2 velocity_;     // 速度
-  Vector2 acceleration_; // 加速度
-  int     radius_;       // 半径
-  int     hp_;           // 血量
-  bool    is_alive_;     // 是否存活
-  // shared_ptr共享指针纹理，只有最后一个指针指向的变量，才会被销毁。
+  Vector2     position_;     // 位置
+  Vector2     velocity_;     // 速度
+  Vector2     acceleration_; // 加速度
+  int         radius_;       // 半径
+  int         hp_;           // 血量
+  bool        is_alive_;     // 是否存活
   TexturePtr  texture_;      // 纹理
   TextureType texture_type_; // 纹理类型
   float       scale_;        // 缩放倍数
