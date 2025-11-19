@@ -17,6 +17,14 @@ void Game::init() {
       Config::Player::POSITION, Config::Player::VELOCITY,
       Config::Player::ACCELERATION, Config::Player::RADIUS, Config::Player::HP,
       Config::Player::SCALE, Config::Player::IMG_PATH, TextureType::UNIQUE);
+
+  /* 创建敌人对象池 */
+  enemy_pool_ = std::make_unique<EnemyPool>(
+      Config::EnemyPool::COUNT, Config::EnemyPool::POSITION,
+      Config::EnemyPool::VELOCITY, Config::EnemyPool::ACCELERATION,
+      Config::EnemyPool::RADIUS, Config::EnemyPool::HP,
+      Config::EnemyPool::SCALE, Config::EnemyPool::IMG_PATH);
+  enemy_pool_->createEntities();
 }
 
 void Game::run() {
