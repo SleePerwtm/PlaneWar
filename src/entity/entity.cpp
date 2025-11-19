@@ -23,16 +23,7 @@ Entity::Entity(Vector2 pos, Vector2 vel, Vector2 acc, int rad, int hp,
 Entity::Entity(Vector2 pos, Vector2 vel, Vector2 acc, int rad, int hp,
                float scale, const char* path, TextureType type)
     : Entity(pos, vel, acc, rad, hp, scale) {
-  texture_type_ = type;
-  switch (type) {
-  case TextureType::SHARED:
-    texture_ = Entity::loadSharedTexture(path);
-    break;
-
-  case TextureType::UNIQUE:
-    texture_ = Entity::loadUniqueTexture(path);
-    break;
-  }
+  loadTexture(path, type);
 }
 
 TexturePtr Entity::loadSharedTexture(const char* path) {
@@ -62,7 +53,12 @@ TexturePtr Entity::loadUniqueTexture(const char* path) {
 }
 
 void Entity::draw() {
-  DrawTextureEx(*texture_, position_, 0.0f, scale_, WHITE);
+  // id == 0 是图片加载失败的标志
+  if (texture_->id != 0) {
+    DrawTextureEx(*texture_, position_, 0.0f, scale_, WHITE);
+  } else {
+    DrawCircle(position_.x + radius_, position_.y + radius_, radius_, WHITE);
+  }
 }
 
 void Entity::updatePosition() {
