@@ -13,6 +13,11 @@ void Window::set_fps(int fps) {
   SetTargetFPS(fps);
 }
 
+void Window::drawFPS(int x, int y) const {
+  // 调用 raylib 的 DrawFPS 函数绘制帧率
+  DrawFPS(x, y);
+}
+
 void Window::setBackgroundColor(const Color& color) const {
   // 调用 raylib 的 ClearBackground 函数设置背景颜色
   ClearBackground(color);

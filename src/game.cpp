@@ -31,6 +31,7 @@ void Game::run() {
   while (!window_->shouldClose()) {
     window_->beginDrawing();
     window_->setBackgroundColor(BLACK);
+    window_->drawFPS(5, 5);
 
     inputHandle();
     updatePosition();

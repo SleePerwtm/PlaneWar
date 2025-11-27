@@ -23,6 +23,8 @@ public:
 
   // 设置帧率
   void set_fps(int fps);
+  // 绘制帧率
+  void drawFPS(int x, int y) const;
 
   // 设置背景颜色
   void setBackgroundColor(const Color& color) const;
