@@ -1,4 +1,12 @@
 cmake_minimum_required(VERSION 3.10.0)
+
+# 设置编译器（需要在project命令之前）
+set(CMAKE_C_COMPILER gcc)
+set(CMAKE_CXX_COMPILER g++)
+
+# 设置生成器
+set(CMAKE_GENERATOR "MinGW Makefiles")
+
 project(PlaneWar VERSION 0.1.0 LANGUAGES C CXX)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
