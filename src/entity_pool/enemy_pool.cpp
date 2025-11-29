@@ -2,13 +2,15 @@
 
 #include "../entity/enemy.h"
 #include "entity_pool.h"
+#include "raylib.h"
 
 #include <cstddef>
 #include <memory>
 
 EnemyPool::EnemyPool(size_t pool_size, Vector2 position, Vector2 velocity,
                      Vector2 acceleration, int radius, int hp, float scale,
-                     const char* texture_path)
+                     const char* texture_path, int min_velocity,
+                     int max_velocity)
     : EntityPool(pool_size) {
   default_.position     = position;
   default_.velocity     = velocity;
@@ -17,9 +19,25 @@ EnemyPool::EnemyPool(size_t pool_size, Vector2 position, Vector2 velocity,
   default_.hp           = hp;
   default_.scale        = scale;
   default_.texture_path = texture_path;
+  default_.min_velocity = min_velocity;
+  default_.max_velocity = max_velocity;
 }
 
 EnemyPool::~EnemyPool() {}
+
+Vector2 EnemyPool::getRandomPosition() const {
+  float size_of_entity = 2 * default_.radius * default_.scale;
+
+  int x = GetRandomValue(0, GetScreenWidth() - size_of_entity);
+  return Vector2{static_cast<float>(x), -size_of_entity};
+}
+
+Vector2 EnemyPool::getRandomVelocity() const {
+  Vector2 velocity;
+  velocity.x = 0.0f;
+  velocity.y = GetRandomValue(default_.min_velocity, default_.max_velocity);
+  return velocity;
+}
 
 void EnemyPool::createEntities() {
   for (size_t i = 0; i < pool_size_; i++) {
@@ -31,6 +49,13 @@ void EnemyPool::createEntities() {
         default_.position, default_.velocity, default_.acceleration,
         default_.radius, default_.hp, default_.scale, default_.texture_path,
         TextureType::SHARED));
+  }
+}
+
+void EnemyPool::setRandomInitialState() {
+  for (auto& entity : entities_) {
+    entity->set_position(getRandomPosition());
+    entity->set_velocity(getRandomVelocity());
   }
 }
 

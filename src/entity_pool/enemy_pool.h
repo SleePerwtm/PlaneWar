@@ -15,16 +15,24 @@ private:
     int         hp;
     float       scale;
     const char* texture_path;
+
+    int min_velocity;
+    int max_velocity;
   } default_;
+
+  Vector2 getRandomPosition() const;
+  Vector2 getRandomVelocity() const;
 
 public:
   EnemyPool(size_t pool_size, Vector2 position, Vector2 velocity,
             Vector2 acceleration, int radius, int hp, float scale,
-            const char* texture_path);
+            const char* texture_path, int max_velocity, int min_velocity);
   ~EnemyPool();
 
   // 创建实体
   void createEntities() override;
+  // 设置随机初始状态
+  void setRandomInitialState();
   // 更新位置
   void updateEntitiesPosition() override;
   // 绘制实体

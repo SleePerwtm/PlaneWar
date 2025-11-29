@@ -33,15 +33,18 @@ constexpr Vector2     MOVE_VELOCITY = {600, 600};          // 设置的移动速
 }; // namespace Player
 
 namespace EnemyPool {
-constexpr int         COUNT        = 10;                    // 敌人数量
+constexpr int         COUNT        = 20;                    // 敌人数量
 constexpr const char* IMG_PATH     = "../assets/enemy.png"; // 敌人贴图资源
 constexpr int         RADIUS       = 16;   // 敌人贴图内接圆半径
 constexpr float       SCALE        = 2.0f; // 敌人贴图缩放倍数
-constexpr Vector2     POSITION     = {RADIUS * 3 * SCALE,
-                                      RADIUS * 3 * SCALE}; // 敌人初始位置
+constexpr Vector2     POSITION     = {-RADIUS * 3 * SCALE,
+                                      -RADIUS * 3 * SCALE}; // 敌人初始位置
 constexpr Vector2     VELOCITY     = {0, 0};                // 敌人初始速度
 constexpr Vector2     ACCELERATION = {0, 0};                // 敌人初始加速度
 constexpr int         HP           = 1;                     // 敌人初始血量
+
+constexpr int MIN_SPEED = 300; // 敌人最小速度
+constexpr int MAX_SPEED = 500; // 敌人最大速度
 }; // namespace EnemyPool
 
 }; // namespace Config

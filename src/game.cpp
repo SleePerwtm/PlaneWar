@@ -23,8 +23,10 @@ void Game::init() {
       Config::EnemyPool::COUNT, Config::EnemyPool::POSITION,
       Config::EnemyPool::VELOCITY, Config::EnemyPool::ACCELERATION,
       Config::EnemyPool::RADIUS, Config::EnemyPool::HP,
-      Config::EnemyPool::SCALE, Config::EnemyPool::IMG_PATH);
+      Config::EnemyPool::SCALE, Config::EnemyPool::IMG_PATH,
+      Config::EnemyPool::MIN_SPEED, Config::EnemyPool::MAX_SPEED);
   enemy_pool_->createEntities();
+  enemy_pool_->setRandomInitialState();
 }
 
 void Game::run() {
