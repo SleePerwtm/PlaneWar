@@ -10,7 +10,10 @@ int main() {
                 Config::Window::TITLE); // 设置大小和标题
   window.set_fps(Config::Window::FPS);  // 设置帧率
 
-  Player player;
+  Player player(Config::Player::POSITION, Config::Player::VELOCITY,
+                Config::Player::ACCELERATION, Config::Player::RADIUS,
+                Config::Player::HP, Config::Player::SCALE,
+                Config::Player::IMG_PATH, TextureType::UNIQUE);
 
   while (!window.shouldClose()) {
     window.beginDrawing();
