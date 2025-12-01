@@ -2,6 +2,8 @@
 
 #include "entity.h"
 
+#include "raylib.h"
+
 class Enemy : public Entity {
 public:
   Enemy(Vector2 pos, Vector2 vel, Vector2 acc, int rad, int hp, float scale,

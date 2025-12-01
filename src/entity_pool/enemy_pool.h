@@ -3,6 +3,7 @@
 #include "entity_pool.h"
 
 #include "raylib.h"
+
 #include <cstddef>
 
 class EnemyPool : public EntityPool {

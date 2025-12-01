@@ -2,6 +2,7 @@
 
 #include "../entity/enemy.h"
 #include "entity_pool.h"
+
 #include "raylib.h"
 
 #include <cstddef>

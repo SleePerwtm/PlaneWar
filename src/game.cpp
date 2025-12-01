@@ -3,8 +3,11 @@
 #include "config.h"
 #include "entity/entity.h"
 #include "entity/player.h"
-#include "raylib.h"
 #include "window/window.h"
+
+#include "raylib.h"
+
+#include <memory>
 
 void Game::init() {
   /* 初始化窗口 */

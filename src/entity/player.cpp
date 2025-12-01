@@ -1,8 +1,8 @@
 #include "player.h"
 
-#include "raylib.h"
-
 #include "entity.h"
+
+#include "raylib.h"
 
 Player::Player(Vector2 pos, Vector2 vel, Vector2 acc, int rad, int hp,
                float scale, const char* path, TextureType type)
