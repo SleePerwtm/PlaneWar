@@ -4,6 +4,7 @@
 #include "../entity/player.h"
 #include "../manager/bullet_manager.h"
 #include "../manager/enemy_manager.h"
+#include "../statistic.h"
 
 #include "raylib.h"
 
@@ -38,6 +39,7 @@ void CollisionManager::detectCollisions(PoolType1& pool1, PoolType2& pool2) {
         // 处理碰撞逻辑
         entity1->damage(1);
         entity2->damage(1);
+        Statistic::addScore(10); // 碰撞得分
       }
     }
   }
