@@ -54,4 +54,17 @@ constexpr ::EnemyManager::Seconds
     SPAWN_INTERVAL(0.5f); // 敌人生成间隔时间，单位秒
 }
 
+namespace BulletPool {
+constexpr int         COUNT        = 30;                     // 子弹数量
+constexpr const char* IMG_PATH     = "../assets/bullet.png"; // 子弹贴图资源
+constexpr int         RADIUS       = 4;    // 子弹贴图内接圆半径
+constexpr float       SCALE        = 2.0f; // 子弹贴图缩放倍数
+constexpr Vector2     POSITION     = {-RADIUS * 3 * SCALE,
+                                      -RADIUS * 3 * SCALE}; // 子弹初始位置
+constexpr Vector2     VELOCITY     = {0, 0};                // 子弹初始速度
+constexpr Vector2     ACCELERATION = {0, 0};                // 子弹初始加速度
+constexpr int         HP           = 1;                     // 子弹初始血量
+constexpr int         SPEED        = 800;                   // 子弹速度
+} // namespace BulletPool
+
 }; // namespace Config

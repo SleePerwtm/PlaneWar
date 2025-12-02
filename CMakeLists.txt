@@ -45,8 +45,13 @@ add_executable(
     src/entity/entity.cpp
     src/entity/player.cpp
     src/entity/enemy.cpp
+    src/entity/bullet.cpp
     src/entity_pool/entity_pool.cpp
     src/entity_pool/enemy_pool.cpp
+    src/entity_pool/bullet_pool.cpp
+    src/manager/entity_manager.hpp
+    src/manager/enemy_manager.cpp
+    src/manager/bullet_manager.cpp
 )
 
 # 链接 raylib 库

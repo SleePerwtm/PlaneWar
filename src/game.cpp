@@ -3,6 +3,8 @@
 #include "config.h"
 #include "entity/entity.h"
 #include "entity/player.h"
+#include "entity_pool/bullet_pool.h"
+#include "entity_pool/enemy_pool.h"
 #include "window/window.h"
 
 #include "raylib.h"
@@ -16,13 +18,13 @@ void Game::init() {
   window_->set_fps(Config::Window::FPS); // 设置帧率
 
   /* 创建玩家实体 */
-  player_ = std::make_unique<Player>(
+  player_ = std::make_shared<Player>(
       Config::Player::POSITION, Config::Player::VELOCITY,
       Config::Player::ACCELERATION, Config::Player::RADIUS, Config::Player::HP,
       Config::Player::SCALE, Config::Player::IMG_PATH, TextureType::UNIQUE);
 
   /* 创建敌人管理器 */
-  enemy_pool_ = std::make_unique<EnemyPool>(
+  std::unique_ptr<EnemyPool> enemy_pool_ = std::make_unique<EnemyPool>(
       Config::EnemyPool::COUNT, Config::EnemyPool::POSITION,
       Config::EnemyPool::VELOCITY, Config::EnemyPool::ACCELERATION,
       Config::EnemyPool::RADIUS, Config::EnemyPool::HP,
@@ -31,6 +33,17 @@ void Game::init() {
   enemy_pool_->createEntities();
   enemy_manager_ = std::make_unique<EnemyManager>(
       std::move(enemy_pool_), Config::EnemyManager::SPAWN_INTERVAL);
+
+  /* 创建子弹管理器 */
+  std::unique_ptr<BulletPool> bullet_pool_ = std::make_unique<BulletPool>(
+      Config::BulletPool::COUNT, Config::BulletPool::POSITION,
+      Config::BulletPool::VELOCITY, Config::BulletPool::ACCELERATION,
+      Config::BulletPool::RADIUS, Config::BulletPool::HP,
+      Config::BulletPool::SCALE, Config::BulletPool::IMG_PATH,
+      Config::BulletPool::SPEED);
+  bullet_pool_->createEntities();
+  bullet_manager_ = std::make_unique<BulletManager>(
+      std::move(bullet_pool_), Config::EnemyManager::SPAWN_INTERVAL, player_);
 }
 
 void Game::run() {
@@ -44,6 +57,8 @@ void Game::run() {
     enemy_manager_->returnToPool();
 
     /* 子弹生成与回收 */
+    bullet_manager_->updateSpawner();
+    bullet_manager_->returnToPool();
 
     /* 玩家输入处理、更新位置、绘制 */
     inputHandle();    // 输入处理
@@ -86,9 +101,11 @@ void Game::inputHandle() {
 void Game::updatePosition() {
   player_->updatePosition();
   enemy_manager_->updateEntitiesPosition();
+  bullet_manager_->updateEntitiesPosition();
 }
 
 void Game::draw() {
   player_->draw();
   enemy_manager_->drawEntities();
+  bullet_manager_->drawEntities();
 }
