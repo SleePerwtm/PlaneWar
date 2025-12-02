@@ -15,7 +15,7 @@ void Statistic::updateTime(TimePoint current_time) {
 
 Seconds Statistic::getTimePassed() { return time_passed_; }
 
-void Statistic::reset() {
+void Statistic::resetStatistics() {
   score_       = 0;
   start_time_  = Clock::now();
   time_passed_ = Seconds(0);

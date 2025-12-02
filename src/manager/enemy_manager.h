@@ -20,4 +20,7 @@ public:
   bool shouldReturnToPool(Entity& entity) const override;
   // 回收一个实体
   void returnToPool() override;
+
+  // 重置敌人状态
+  void resetEnemies();
 };

@@ -7,6 +7,9 @@
 #include "window/window.h"
 
 #include <memory>
+#include <string>
+
+enum class Status { PRE_GAME, RUNNING, GAME_OVER, RESTART };
 
 class Game {
 private:
@@ -15,6 +18,11 @@ private:
   std::shared_ptr<EnemyManager>     enemy_manager_;     // 敌人管理器
   std::shared_ptr<BulletManager>    bullet_manager_;    // 子弹管理器
   std::unique_ptr<CollisionManager> collision_manager_; // 碰撞管理器
+
+  Status status_;
+
+  std::string getScoreText() const;
+  std::string getTimeText() const;
 
 public:
   Game()  = default;
@@ -31,4 +39,20 @@ public:
   void updatePosition();
   // 绘制
   void drawEntities();
+
+  // 绘制统计信息
+  void drawStatistics();
+  // 绘制玩家血量
+  void drawPlayerHP();
+
+  // 游戏需要结束
+  bool shouldClose() const;
+
+  // 游戏开始前画面
+  void preGameScreen();
+  // 游戏结束画面
+  void gameOverScreen();
+
+  // 重新开始游戏
+  void restart();
 };

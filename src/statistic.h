@@ -19,5 +19,5 @@ struct Statistic {
   // 获取游戏已进行时间
   static Seconds getTimePassed();
 
-  static void reset();
+  static void resetStatistics();
 };

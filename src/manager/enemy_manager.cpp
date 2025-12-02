@@ -55,3 +55,18 @@ void EnemyManager::returnToPool() {
     }
   }
 }
+
+void EnemyManager::resetEnemies() {
+  for (auto& enemy : pool_->get_entities()) {
+    // 重置敌人状态
+    enemy->deactivate();
+    Vector2 hide_pos = Config::EnemyPool::POSITION;
+    Vector2 hide_vel = Config::EnemyPool::VELOCITY;     // {0.0f, 0.0f}
+    Vector2 hide_acc = Config::EnemyPool::ACCELERATION; // {0.0f, 0.0f}
+    int     hp       = Config::EnemyPool::HP;
+    enemy->set_position(hide_pos);
+    enemy->set_velocity(hide_vel);
+    enemy->set_acceleration(hide_acc);
+    enemy->set_hp(hp);
+  }
+}

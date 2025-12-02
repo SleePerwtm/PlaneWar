@@ -56,3 +56,17 @@ void BulletManager::returnToPool() {
     }
   }
 }
+
+void BulletManager::resetBullets() {
+  for (auto& bullet : pool_->get_entities()) {
+    bullet->deactivate();
+    Vector2 hide_pos = Config::BulletPool::POSITION;
+    Vector2 hide_vel = Config::BulletPool::VELOCITY;     // {0.0f, 0.0f}
+    Vector2 hide_acc = Config::BulletPool::ACCELERATION; // {0.0f, 0.0f}
+    int     hp       = Config::BulletPool::HP;
+    bullet->set_position(hide_pos);
+    bullet->set_velocity(hide_vel);
+    bullet->set_acceleration(hide_acc);
+    bullet->set_hp(hp);
+  }
+}

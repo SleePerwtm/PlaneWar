@@ -6,7 +6,9 @@
 
 Player::Player(Vector2 pos, Vector2 vel, Vector2 acc, int rad, int hp,
                float scale, const char* path, TextureType type)
-    : Entity(pos, vel, acc, rad, hp, scale, path, type) {}
+    : Entity(pos, vel, acc, rad, hp, scale, path, type) {
+  default_ = {pos, vel, acc, hp};
+}
 
 void Player::updatePosition() {
   /* 利用 raylib 中的 GetFrameTime() 函数，获取帧间间隔时间 */
@@ -28,4 +30,12 @@ void Player::updatePosition() {
   /* 更新飞机速度 */
   velocity_.x += acceleration_.x * GetFrameTime();
   velocity_.y += acceleration_.y * GetFrameTime();
+}
+
+void Player::resetPlayer() {
+  /* 重置玩家状态 */
+  position_     = default_.position;
+  velocity_     = default_.velocity;
+  acceleration_ = default_.acceleration;
+  hp_           = default_.hp;
 }

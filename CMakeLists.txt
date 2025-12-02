@@ -39,9 +39,9 @@ include_directories(${RAYLIB_INCLUDE_DIR})
 add_executable(
     PlaneWar
     src/main.cpp
-    # test/player_display.cpp
     src/game.cpp
     src/window/window.cpp
+    src/statistic.cpp
     src/entity/entity.cpp
     src/entity/player.cpp
     src/entity/enemy.cpp

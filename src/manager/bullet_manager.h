@@ -21,4 +21,7 @@ public:
   bool shouldReturnToPool(Entity& entity) const override;
   // 回收一个实体
   void returnToPool() override;
+
+  // 重置子弹状态
+  void resetBullets();
 };
