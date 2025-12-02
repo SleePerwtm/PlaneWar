@@ -88,11 +88,15 @@ void Entity::set_velocity(Vector2 vel) { velocity_ = vel; }
 
 void Entity::set_position(Vector2 pos) { position_ = pos; }
 
+void Entity::set_acceleration(Vector2 acc) { acceleration_ = acc; }
+
 void Entity::set_hp(int hp) { hp_ = hp; }
 
 Vector2 Entity::get_velocity() const { return velocity_; }
 
 Vector2 Entity::get_position() const { return position_; }
+
+Vector2 Entity::get_acceleration() const { return acceleration_; }
 
 int Entity::get_hp() const { return hp_; }
 
