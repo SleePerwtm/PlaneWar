@@ -18,7 +18,9 @@ void TextureDeleter(Texture2D* texture) {
 Entity::Entity(Vector2 pos, Vector2 vel, Vector2 acc, int rad, int hp,
                float scale)
     : position_(pos), velocity_(vel), acceleration_(acc), radius_(rad * scale),
-      hp_(hp), scale_(scale) {}
+      hp_(hp), scale_(scale) {
+  loadTexture("", TextureType::SHARED);
+}
 
 Entity::Entity(Vector2 pos, Vector2 vel, Vector2 acc, int rad, int hp,
                float scale, const char* path, TextureType type)
