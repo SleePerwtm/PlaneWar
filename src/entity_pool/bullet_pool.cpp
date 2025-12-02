@@ -10,14 +10,8 @@ BulletPool::BulletPool(size_t pool_size, Vector2 position, Vector2 velocity,
                        Vector2 acceleration, int radius, int hp, float scale,
                        const char* texture_path, int speed)
     : EntityPool(pool_size) {
-  default_.position     = position;
-  default_.velocity     = velocity;
-  default_.acceleration = acceleration;
-  default_.radius       = radius;
-  default_.hp           = hp;
-  default_.scale        = scale;
-  default_.texture_path = texture_path;
-  default_.speed        = speed;
+  default_ = {position, velocity, acceleration, radius,
+              hp,       scale,    texture_path, speed};
 }
 
 BulletPool::~BulletPool() {}

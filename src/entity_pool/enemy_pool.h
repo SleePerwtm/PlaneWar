@@ -33,6 +33,4 @@ public:
   Vector2 getRandomPosition() const;
   // 获取随机速度
   Vector2 getRandomVelocity() const;
-  // 设置随机初始状态
-  void setRandomInitialState();
 };
