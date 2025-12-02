@@ -35,8 +35,4 @@ public:
   Vector2 getRandomVelocity() const;
   // 设置随机初始状态
   void setRandomInitialState();
-  // 更新位置
-  void updateEntitiesPosition() override;
-  // 绘制实体
-  void drawEntities() override;
 };

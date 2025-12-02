@@ -21,9 +21,9 @@ public:
   virtual void createEntities() = 0;
 
   // 更新实体位置
-  virtual void updateEntitiesPosition() = 0;
+  virtual void updateEntitiesPosition();
   // 绘制实体
-  virtual void drawEntities() = 0;
+  virtual void drawEntities();
 
   // 获取实体池
   std::vector<EntityPtr>&       get_entities();

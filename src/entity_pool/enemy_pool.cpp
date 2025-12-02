@@ -59,17 +59,3 @@ void EnemyPool::setRandomInitialState() {
     entity->set_velocity(getRandomVelocity());
   }
 }
-
-void EnemyPool::updateEntitiesPosition() {
-  for (auto& entity : entities_) {
-    if (entity->is_active())
-      entity->updatePosition();
-  }
-}
-
-void EnemyPool::drawEntities() {
-  for (auto& entity : entities_) {
-    if (entity->is_active())
-      entity->draw();
-  }
-}

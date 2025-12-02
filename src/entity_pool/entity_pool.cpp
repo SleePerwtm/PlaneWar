@@ -13,6 +13,20 @@ EntityPool::~EntityPool() {
   }
 }
 
+void EntityPool::updateEntitiesPosition() {
+  for (auto& entity : entities_) {
+    if (entity->is_active())
+      entity->updatePosition();
+  }
+}
+
+void EntityPool::drawEntities() {
+  for (auto& entity : entities_) {
+    if (entity->is_active())
+      entity->draw();
+  }
+}
+
 std::vector<EntityPtr>& EntityPool::get_entities() { return entities_; }
 
 const std::vector<EntityPtr>& EntityPool::get_entities() const {
