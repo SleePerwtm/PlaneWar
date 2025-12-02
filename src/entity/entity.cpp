@@ -103,3 +103,5 @@ void Entity::activate() { is_active_ = true; }
 void Entity::deactivate() { is_active_ = false; }
 
 bool Entity::is_active() const { return is_active_; }
+
+void Entity::damage(int damage) { hp_ -= damage; }

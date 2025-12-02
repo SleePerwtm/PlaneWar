@@ -52,6 +52,7 @@ add_executable(
     src/manager/entity_manager.hpp
     src/manager/enemy_manager.cpp
     src/manager/bullet_manager.cpp
+    src/manager/collision_manager.cpp
 )
 
 # 链接 raylib 库

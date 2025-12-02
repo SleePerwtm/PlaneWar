@@ -68,4 +68,7 @@ public:
   virtual void deactivate();
   // 获取激活状态
   virtual bool is_active() const;
+
+  // 碰撞时受到伤害
+  virtual void damage(int damage);
 };

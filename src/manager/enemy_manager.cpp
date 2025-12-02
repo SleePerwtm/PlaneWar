@@ -52,9 +52,3 @@ void EnemyManager::returnToPool() {
     }
   }
 }
-
-void EnemyManager::onCollision(Entity& entity, Entity& other) {
-  // 敌人和其他实体发生碰撞时，敌人血量减1
-  int current_hp = entity.get_hp();
-  entity.set_hp(current_hp - 1);
-}

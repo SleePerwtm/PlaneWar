@@ -31,7 +31,7 @@ void Game::init() {
       Config::EnemyPool::SCALE, Config::EnemyPool::IMG_PATH,
       Config::EnemyPool::MIN_SPEED, Config::EnemyPool::MAX_SPEED);
   enemy_pool_->createEntities();
-  enemy_manager_ = std::make_unique<EnemyManager>(
+  enemy_manager_ = std::make_shared<EnemyManager>(
       std::move(enemy_pool_), Config::EnemyManager::SPAWN_INTERVAL);
 
   /* 创建子弹管理器 */
@@ -42,8 +42,12 @@ void Game::init() {
       Config::BulletPool::SCALE, Config::BulletPool::IMG_PATH,
       Config::BulletPool::SPEED);
   bullet_pool_->createEntities();
-  bullet_manager_ = std::make_unique<BulletManager>(
+  bullet_manager_ = std::make_shared<BulletManager>(
       std::move(bullet_pool_), Config::EnemyManager::SPAWN_INTERVAL, player_);
+
+  /* 创建碰撞管理器 */
+  collision_manager_ = std::make_unique<CollisionManager>(
+      player_, enemy_manager_, bullet_manager_);
 }
 
 void Game::run() {
@@ -51,6 +55,8 @@ void Game::run() {
     window_->beginDrawing();            // 开始绘制
     window_->setBackgroundColor(BLACK); // 设置背景颜色
     window_->drawFPS(5, 5);             // 绘制帧率
+
+    collision_manager_->handleCollisions(); // 处理碰撞
 
     /* 敌人生成与回收 */
     enemy_manager_->updateSpawner();
@@ -63,7 +69,7 @@ void Game::run() {
     /* 玩家输入处理、更新位置、绘制 */
     inputHandle();    // 输入处理
     updatePosition(); // 更新位置
-    draw();           // 绘制
+    drawEntities();   // 绘制
 
     window_->endDrawing(); // 结束绘制
   }
@@ -104,7 +110,7 @@ void Game::updatePosition() {
   bullet_manager_->updateEntitiesPosition();
 }
 
-void Game::draw() {
+void Game::drawEntities() {
   player_->draw();
   enemy_manager_->drawEntities();
   bullet_manager_->drawEntities();
