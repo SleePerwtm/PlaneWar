@@ -18,6 +18,7 @@ void BulletManager::spawnEntity() {
       Vector2 vel{0, -Config::BulletPool::SPEED};
       bullet->set_position(pos);
       bullet->set_velocity(vel);
+      bullet->set_acceleration(Config::BulletPool::ACCELERATION);
       break;
     }
   }
@@ -45,10 +46,12 @@ void BulletManager::returnToPool() {
       enemy->deactivate();
       // 移动到屏幕外隐藏位置
       Vector2 hide_pos = Config::BulletPool::POSITION;
-      Vector2 hide_vel = Config::BulletPool::VELOCITY; // {0.0f, 0.0f}
+      Vector2 hide_vel = Config::BulletPool::VELOCITY;     // {0.0f, 0.0f}
+      Vector2 hide_acc = Config::BulletPool::ACCELERATION; // {0.0f, 0.0f}
       int     hp       = Config::BulletPool::HP;
       enemy->set_position(hide_pos);
       enemy->set_velocity(hide_vel);
+      enemy->set_acceleration(hide_acc);
       enemy->set_hp(hp);
     }
   }

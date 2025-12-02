@@ -19,6 +19,7 @@ void EnemyManager::spawnEntity() {
       Vector2 vel = pool_->getRandomVelocity();
       enemy->set_position(pos);
       enemy->set_velocity(vel);
+      enemy->set_acceleration(Config::EnemyPool::ACCELERATION);
       break;
     }
   }
@@ -44,10 +45,12 @@ void EnemyManager::returnToPool() {
       enemy->deactivate();
       // 移动到屏幕外隐藏位置
       Vector2 hide_pos = Config::EnemyPool::POSITION;
-      Vector2 hide_vel = Config::EnemyPool::VELOCITY; // {0.0f, 0.0f}
+      Vector2 hide_vel = Config::EnemyPool::VELOCITY;     // {0.0f, 0.0f}
+      Vector2 hide_acc = Config::EnemyPool::ACCELERATION; // {0.0f, 0.0f}
       int     hp       = Config::EnemyPool::HP;
       enemy->set_position(hide_pos);
       enemy->set_velocity(hide_vel);
+      enemy->set_acceleration(hide_acc);
       enemy->set_hp(hp);
     }
   }
