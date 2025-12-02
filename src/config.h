@@ -68,7 +68,12 @@ constexpr Vector2     POSITION     = {-RADIUS * 3 * SCALE,
 constexpr Vector2     VELOCITY     = {0, 0};                // 子弹初始速度
 constexpr Vector2     ACCELERATION = {0, 0};                // 子弹初始加速度
 constexpr int         HP           = 1;                     // 子弹初始血量
-constexpr int         SPEED        = 800;                   // 子弹速度
-} // namespace BulletPool
+
+constexpr int SPEED = 800; // 子弹速度
+}; // namespace BulletPool
+
+namespace BulletManager {
+constexpr Seconds SPAWN_INTERVAL(0.3f); // 子弹生成间隔时间，单位秒
+}; // namespace BulletManager
 
 }; // namespace Config

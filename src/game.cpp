@@ -43,7 +43,7 @@ void Game::init() {
       Config::BulletPool::SPEED);
   bullet_pool_->createEntities();
   bullet_manager_ = std::make_shared<BulletManager>(
-      std::move(bullet_pool_), Config::EnemyManager::SPAWN_INTERVAL, player_);
+      std::move(bullet_pool_), Config::BulletManager::SPAWN_INTERVAL, player_);
 
   /* 创建碰撞管理器 */
   collision_manager_ = std::make_unique<CollisionManager>(
