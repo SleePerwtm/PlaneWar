@@ -1,5 +1,7 @@
 #pragma once
 
+#include "manager/enemy_manager.h"
+
 #include "raylib.h"
 
 // 在C++中，非整型的静态成员变量不能在类内初始化，除非使用 constexpr
@@ -46,5 +48,10 @@ constexpr int         HP           = 1;                     // 敌人初始血�
 constexpr int MIN_SPEED = 300; // 敌人最小速度
 constexpr int MAX_SPEED = 500; // 敌人最大速度
 }; // namespace EnemyPool
+
+namespace EnemyManager {
+constexpr ::EnemyManager::Seconds
+    SPAWN_INTERVAL(0.5f); // 敌人生成间隔时间，单位秒
+}
 
 }; // namespace Config

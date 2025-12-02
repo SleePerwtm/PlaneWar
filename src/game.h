@@ -2,15 +2,17 @@
 
 #include "entity/player.h"
 #include "entity_pool/enemy_pool.h"
+#include "manager/enemy_manager.h"
 #include "window/window.h"
 
 #include <memory>
 
 class Game {
 private:
-  std::unique_ptr<Window>    window_;     // 窗口对象
-  std::unique_ptr<Player>    player_;     // 玩家对象
-  std::unique_ptr<EnemyPool> enemy_pool_; // 敌人对象池
+  std::unique_ptr<Window>       window_;        // 窗口对象
+  std::unique_ptr<Player>       player_;        // 玩家对象
+  std::unique_ptr<EnemyPool>    enemy_pool_;    // 敌人对象池
+  std::unique_ptr<EnemyManager> enemy_manager_; // 敌人管理器
 
 public:
   Game()  = default;

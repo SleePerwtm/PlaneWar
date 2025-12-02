@@ -12,3 +12,9 @@ EntityPool::~EntityPool() {
     entity.reset();
   }
 }
+
+std::vector<EntityPtr>& EntityPool::get_entities() { return entities_; }
+
+const std::vector<EntityPtr>& EntityPool::get_entities() const {
+  return entities_;
+}

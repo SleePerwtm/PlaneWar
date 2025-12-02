@@ -19,7 +19,7 @@ protected:
   Vector2     acceleration_; // 加速度
   int         radius_;       // 半径
   int         hp_;           // 血量
-  bool        is_alive_;     // 是否存活
+  bool        is_active_;    // 是否激活
   TexturePtr  texture_;      // 纹理
   TextureType texture_type_; // 纹理类型
   float       scale_;        // 缩放倍数
@@ -50,7 +50,22 @@ public:
   virtual void set_velocity(Vector2 vel);
   // 设置位置
   virtual void set_position(Vector2 pos);
+  // 设置血量
+  virtual void set_hp(int hp);
 
   // 获取速度
   virtual Vector2 get_velocity() const;
+  // 获取位置
+  virtual Vector2 get_position() const;
+  // 获取血量
+  virtual int get_hp() const;
+  // 获取半径
+  virtual int get_radius() const;
+
+  // 激活
+  virtual void activate();
+  // 停用
+  virtual void deactivate();
+  // 获取激活状态
+  virtual bool is_active() const;
 };

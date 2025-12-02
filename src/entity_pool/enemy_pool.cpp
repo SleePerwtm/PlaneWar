@@ -62,12 +62,14 @@ void EnemyPool::setRandomInitialState() {
 
 void EnemyPool::updateEntitiesPosition() {
   for (auto& entity : entities_) {
-    entity->updatePosition();
+    if (entity->is_active())
+      entity->updatePosition();
   }
 }
 
 void EnemyPool::drawEntities() {
   for (auto& entity : entities_) {
-    entity->draw();
+    if (entity->is_active())
+      entity->draw();
   }
 }

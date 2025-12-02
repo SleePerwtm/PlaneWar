@@ -21,7 +21,7 @@ void Game::init() {
       Config::Player::ACCELERATION, Config::Player::RADIUS, Config::Player::HP,
       Config::Player::SCALE, Config::Player::IMG_PATH, TextureType::UNIQUE);
 
-  /* 创建敌人对象池 */
+  /* 创建敌人管理器 */
   enemy_pool_ = std::make_unique<EnemyPool>(
       Config::EnemyPool::COUNT, Config::EnemyPool::POSITION,
       Config::EnemyPool::VELOCITY, Config::EnemyPool::ACCELERATION,
@@ -29,22 +29,30 @@ void Game::init() {
       Config::EnemyPool::SCALE, Config::EnemyPool::IMG_PATH,
       Config::EnemyPool::MIN_SPEED, Config::EnemyPool::MAX_SPEED);
   enemy_pool_->createEntities();
-  enemy_pool_->setRandomInitialState();
+  enemy_manager_ = std::make_unique<EnemyManager>(
+      std::move(enemy_pool_), Config::EnemyManager::SPAWN_INTERVAL);
 }
 
 void Game::run() {
   while (!window_->shouldClose()) {
-    window_->beginDrawing();
-    window_->setBackgroundColor(BLACK);
-    window_->drawFPS(5, 5);
+    window_->beginDrawing();            // 开始绘制
+    window_->setBackgroundColor(BLACK); // 设置背景颜色
+    window_->drawFPS(5, 5);             // 绘制帧率
 
-    inputHandle();
-    updatePosition();
-    draw();
+    /* 敌人生成与回收 */
+    enemy_manager_->updateSpawner();
+    enemy_manager_->returnToPool();
 
-    window_->endDrawing();
+    /* 子弹生成与回收 */
+
+    /* 玩家输入处理、更新位置、绘制 */
+    inputHandle();    // 输入处理
+    updatePosition(); // 更新位置
+    draw();           // 绘制
+
+    window_->endDrawing(); // 结束绘制
   }
-  window_->close();
+  window_->close(); // 关闭窗口
 }
 
 void Game::inputHandle() {
@@ -77,10 +85,10 @@ void Game::inputHandle() {
 
 void Game::updatePosition() {
   player_->updatePosition();
-  enemy_pool_->updateEntitiesPosition();
+  enemy_manager_->updateEntitiesPosition();
 }
 
 void Game::draw() {
   player_->draw();
-  enemy_pool_->drawEntities();
+  enemy_manager_->drawEntities();
 }

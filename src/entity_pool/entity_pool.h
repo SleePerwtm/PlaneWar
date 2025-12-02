@@ -6,10 +6,10 @@
 #include <memory>
 #include <vector>
 
+using EntityPtr = std::unique_ptr<Entity>;
+
 class EntityPool {
 protected:
-  using EntityPtr = std::unique_ptr<Entity>;
-
   std::vector<EntityPtr> entities_;
   size_t                 pool_size_;
 
@@ -24,4 +24,8 @@ public:
   virtual void updateEntitiesPosition() = 0;
   // 绘制实体
   virtual void drawEntities() = 0;
+
+  // 获取实体池
+  std::vector<EntityPtr>&       get_entities();
+  const std::vector<EntityPtr>& get_entities() const;
 };
