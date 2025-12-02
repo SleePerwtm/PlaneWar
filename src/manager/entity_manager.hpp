@@ -2,15 +2,10 @@
 
 #include "../entity/entity.h"
 
-#include <chrono>
+#include "../config.h"
 #include <memory>
 
 template <class PoolType> class EntityManager {
-public:
-  using Clock     = std::chrono::steady_clock;
-  using TimePoint = Clock::time_point;
-  using Seconds   = std::chrono::duration<float>;
-
 protected:
   std::unique_ptr<PoolType> pool_; // 实体对象池
 

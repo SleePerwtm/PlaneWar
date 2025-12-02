@@ -1,8 +1,12 @@
 #pragma once
 
-#include "manager/enemy_manager.h"
-
 #include "raylib.h"
+
+#include <chrono>
+
+using Clock     = std::chrono::steady_clock;
+using TimePoint = Clock::time_point;
+using Seconds   = std::chrono::duration<float>;
 
 // 在C++中，非整型的静态成员变量不能在类内初始化，除非使用 constexpr
 namespace Config {
@@ -50,9 +54,9 @@ constexpr int MAX_SPEED = 500; // 敌人最大速度
 }; // namespace EnemyPool
 
 namespace EnemyManager {
-constexpr ::EnemyManager::Seconds
-    SPAWN_INTERVAL(0.5f); // 敌人生成间隔时间，单位秒
-}
+constexpr Seconds SPAWN_INTERVAL(0.1f); // 敌人生成间隔时间，单位秒
+;
+} // namespace EnemyManager
 
 namespace BulletPool {
 constexpr int         COUNT        = 30;                     // 子弹数量

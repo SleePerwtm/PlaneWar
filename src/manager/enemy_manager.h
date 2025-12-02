@@ -10,8 +10,7 @@
 class EnemyManager : public EntityManager<EnemyPool> {
 private:
 public:
-  EnemyManager(std::unique_ptr<EnemyPool> enemy_pool,
-               EntityManager::Seconds     spawn_interval);
+  EnemyManager(std::unique_ptr<EnemyPool> enemy_pool, Seconds spawn_interval);
   ~EnemyManager() = default;
 
   // 生成一个实体

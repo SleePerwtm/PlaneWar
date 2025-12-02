@@ -10,9 +10,8 @@ class BulletManager : public EntityManager<BulletPool> {
 private:
   std::shared_ptr<Player> player_; // 玩家对象指针
 public:
-  BulletManager(std::unique_ptr<BulletPool> bullet_pool,
-                EntityManager::Seconds      spawn_interval,
-                std::shared_ptr<Player>     player);
+  BulletManager(std::unique_ptr<BulletPool> bullet_pool, Seconds spawn_interval,
+                std::shared_ptr<Player> player);
   ~BulletManager() = default;
 
   // 生成一个实体
