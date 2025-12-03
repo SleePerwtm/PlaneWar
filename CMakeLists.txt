@@ -8,6 +8,9 @@ project(PlaneWar VERSION 0.1.0 LANGUAGES C CXX)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+# 在 CMakeLists.txt 中设置链接器标志（解决到其他设备上显示 libgcc_s_seh-1.dll 等不存在的问题）
+set(CMAKE_EXE_LINKER_FLAGS "-static")
+
 # 摘自 raylib 的 cmake 示例项目中的代码
 # Dependencies
 set(RAYLIB_VERSION 5.5)
