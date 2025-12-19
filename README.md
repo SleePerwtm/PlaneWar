@@ -8,12 +8,26 @@
 
 # 构建与运行
 
+确保电脑上已经安装了 CMake 和 MinGW，并且已经正确配置了环境变量。
+
+下面的指令能在 Windows 系统中正常运行。
+
 在项目根目录下运行以下命令以构建和运行游戏（使用 MinGW Makefiles 生成器）：
 
 ```bash
 mkdir build
 cd build
 cmake -G "MinGW Makefiles" ..
+cmake --build .
+./PlaneWar.exe
+```
+
+也可以使用 Ninja 生成器：
+
+```bash
+mkdir build
+cd build
+cmake -G "Ninja" ..
 cmake --build .
 ./PlaneWar.exe
 ```
