@@ -8,9 +8,9 @@
 
 # 构建与运行
 
-确保电脑上已经安装了 CMake 和 MinGW，并且已经正确配置了环境变量。
+## Windows
 
-下面的指令能在 Windows 系统中正常运行。
+确保电脑上已经安装了 CMake 和 MinGW，并且已经正确配置了环境变量。
 
 在项目根目录下运行以下命令以构建和运行游戏（使用 MinGW Makefiles 生成器）：
 
@@ -30,6 +30,28 @@ cd build
 cmake -G "Ninja" ..
 cmake --build .
 ./PlaneWar.exe
+```
+
+## Linux
+
+确保电脑上安装了 CMake 和 g++。
+
+需要提前安装一些依赖库：
+
+```bash
+sudo apt-get install libx11-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev libgl1-mesa-dev libglu1-mesa-dev
+```
+
+附带还有一些组建，全部安装。
+
+在项目根目录下运行以下命令以构建和运行游戏（使用 Unix Makefiles 生成器）：
+
+```bash
+mkdir build
+cd build
+cmake -G "Unix Makefiles" ..
+cmake --build .
+./PlaneWar
 ```
 
 # 项目分析
